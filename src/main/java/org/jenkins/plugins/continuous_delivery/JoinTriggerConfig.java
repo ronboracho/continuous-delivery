@@ -7,6 +7,7 @@ import hudson.model.BuildListener;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Cause.UpstreamCause;
+import hudson.model.Descriptor;
 import hudson.model.Hudson;
 import hudson.model.Node;
 import hudson.model.Run;
@@ -121,7 +122,13 @@ public class JoinTriggerConfig extends BuildTriggerConfig {
 	}
 
 	@Extension
-	public static class DescriptorImpl extends
-			BuildTriggerConfig.DescriptorImpl {
+	public static class DescriptorImpl extends Descriptor<BuildTriggerConfig> {
+
+		@Override
+		public String getDisplayName() {
+			// TODO Auto-generated method stub
+			return "";
+		}
+		
 	}
 }

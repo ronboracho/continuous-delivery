@@ -27,7 +27,17 @@
 
 	</dependencies>
 
+  <developers>
+    <developer>
+      <id>mha</id>
+      <name>Markus Haas</name>
+      
+    </developer>
+  </developers>
+
   <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
+  <contributors>
+  </contributors>
   <repositories>
     <repository>
       <id>m.g.o-public</id>

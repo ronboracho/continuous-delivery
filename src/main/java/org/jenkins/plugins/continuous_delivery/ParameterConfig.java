@@ -29,22 +29,22 @@ public class ParameterConfig extends AbstractDescribableImpl<ParameterConfig>{
         this.configs = configs;
     }
     
-    public List<Descriptor<AbstractBuildParameters>> getBuilderConfigDescriptors() {
-        return Hudson.getInstance().<AbstractBuildParameters,
-          Descriptor<AbstractBuildParameters>>getDescriptorList(AbstractBuildParameters.class);
-    }
-
-    public List<Descriptor<AbstractBuildParameterFactory>> getBuilderConfigFactoryDescriptors() {
-        return Hudson.getInstance().<AbstractBuildParameterFactory,
-          Descriptor<AbstractBuildParameterFactory>>getDescriptorList(AbstractBuildParameterFactory.class);
-    }
-
     @Extension
     public static class DescriptorImpl extends Descriptor<ParameterConfig> {
         @Override
         public String getDisplayName() {
             return ""; // unused
         }
+        public List<Descriptor<AbstractBuildParameters>> getBuilderConfigDescriptors() {
+            return Hudson.getInstance().<AbstractBuildParameters,
+              Descriptor<AbstractBuildParameters>>getDescriptorList(AbstractBuildParameters.class);
+        }
+
+        public List<Descriptor<AbstractBuildParameterFactory>> getBuilderConfigFactoryDescriptors() {
+            return Hudson.getInstance().<AbstractBuildParameterFactory,
+              Descriptor<AbstractBuildParameterFactory>>getDescriptorList(AbstractBuildParameterFactory.class);
+        }
+
 
     }
 

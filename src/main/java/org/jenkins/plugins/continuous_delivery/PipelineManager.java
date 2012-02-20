@@ -48,6 +48,7 @@ public class PipelineManager extends Builder implements DependecyDeclarer {
 	public boolean perform(AbstractBuild<?, ?> build, Launcher launcher,
 			BuildListener listener) throws InterruptedException, IOException {
 		boolean buildStepResult = true;
+		;
 		try {
 			listener.getLogger().println("Triggering Pipeline-Manger");
 
@@ -98,6 +99,19 @@ public class PipelineManager extends Builder implements DependecyDeclarer {
 		}
 
 		return buildStepResult;
+	}
+
+	private boolean validateProjects() {
+		for (JoinTriggerConfig config : getConfigs()) {
+			List<AbstractProject> projectList = config.getProjectList(null,
+					null);
+			for (AbstractProject project : projectList) {
+				if (!project.isBuildable()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	@Extension(ordinal = Integer.MAX_VALUE - 500)
