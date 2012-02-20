@@ -1,0 +1,21 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry title="${%Projects to build}" field="projects">
+    <f:textbox />
+  </f:entry>
+
+  <f:optionalBlock field="parameterConfig" title="${%Activated checkbox will trigger specified projects...}" checked="${instance.trigger==true}">
+
+    <j:set var="descriptor" value="${app.getDescriptorOrDie(descriptor.getPropertyType(field).clazz)}" />
+    <j:set var="instance" value="${instance[field]}"/>
+    <st:include from="${descriptor}" page="${descriptor.configPage}" />
+  </f:optionalBlock>
+
+  <!-- TODO: replace with <f:optionalProperty> -->
+  <f:optionalBlock field="block" title="${%Activated checkbox will wait for running builds of specified projects...}" checked="${instance.block!=null}">
+    <j:set var="descriptor" value="${app.getDescriptorOrDie(descriptor.getPropertyType(field).clazz)}" />
+    <j:set var="instance" value="${instance[field]}"/>
+    <st:include from="${descriptor}" page="${descriptor.configPage}" />
+  </f:optionalBlock>
+
+  
+</j:jelly>
