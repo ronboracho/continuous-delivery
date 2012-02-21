@@ -63,7 +63,7 @@ public class JoinTriggerConfig extends BuildTriggerConfig {
 	@DataBoundConstructor
 	public JoinTriggerConfig(String projects, BlockingBehaviour block,
 			ParameterConfig parameterConfig) {
-		super(projects, ResultCondition.ALWAYS, false, null, null);
+		super(projects, ResultCondition.ALWAYS, false, parameterConfig.getConfigFactories(), parameterConfig.getConfigs());
 
 		this.block = block;
 		this.joinStep = (block != null);
